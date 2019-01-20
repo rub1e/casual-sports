@@ -15,8 +15,6 @@ const funAtThePark = [
   }
 ];
 
-// const error = "error: invalid input syntax for integer: \"potatoes\"";
-
 describe("a suite of tests", () => {
 
   test("the function returns the data in the event with the id of 1", () => {
@@ -31,7 +29,7 @@ describe("a suite of tests", () => {
     dbBuild((error, response) => {
       if (error) return console.log("ERROR IN DBBUILD: " + error);
       expect.assertions(1);
-      return expect(getOneEvent("potatoes")).rejects.toMatch(error);
+      return expect(getOneEvent("potatoes")).rejects.toThrow();
     });
   });
 })
