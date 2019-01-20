@@ -17,18 +17,21 @@ const funAtThePark = [
 
 // const error = "error: invalid input syntax for integer: \"potatoes\"";
 
-test("the function returns the data in the event with the id of 1", () => {
-  dbBuild((error, response) => {
-    if (error) return console.log("ERROR IN DBBUILD: " + error);
-    expect.assertions(1);
-    return expect(getOneEvent(1)).resolves.toEqual(funAtThePark);
-  });
-});
+describe("a suite of tests", () => {
 
-// test("the fetch fails with an error", () => {
-//   dbBuild(function(error, response) {
-//     if (error) return console.log("ERROR IN DBBUILD: " + error);
-//     expect.assertions(1);
-//     return expect(getOneEvent("potatoes")).rejects.toMatch(error);
-//   });
-// });
+  test("the function returns the data in the event with the id of 1", () => {
+    dbBuild((error, response) => {
+      if (error) return console.log("ERROR IN DBBUILD: " + error);
+      expect.assertions(1);
+      return expect(getOneEvent(1)).resolves.toEqual(funAtThePark);
+    });
+  });
+
+  test("the fetch fails with an error", () => {
+    dbBuild((error, response) => {
+      if (error) return console.log("ERROR IN DBBUILD: " + error);
+      expect.assertions(1);
+      return expect(getOneEvent("potatoes")).rejects.toMatch(error);
+    });
+  });
+})

@@ -1,5 +1,6 @@
 const numToString = num => {
   let gender;
+  num = num.toString()
   if (num === "1") {
     gender = "Mixed";
   } else if (num === "2") {
