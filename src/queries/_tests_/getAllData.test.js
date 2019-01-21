@@ -719,7 +719,7 @@ const teams = [
   }
 ];
 
-describe.only("getAllData", () => {  
+describe.only("getAllData", () => {
   test("the function returns all of the event data", () => {
     dbBuild((error, response) => {
       if (error) return console.log("ERROR IN DBBUILD: " + error);
@@ -732,8 +732,8 @@ describe.only("getAllData", () => {
     dbBuild((error, response) => {
       if (error) return console.log("ERROR IN DBBUILD: " + error);
       const msg = "OMG EXPLOSIONS";
+      return expect(getAllData.getTableData("blah")).rejects.toThrow();
     });
-    return expect(getAllData.getTableData("blah")).rejects.toThrow();
   });
 
   test("the function returns all of the team data", () => {
