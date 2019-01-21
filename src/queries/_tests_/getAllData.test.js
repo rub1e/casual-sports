@@ -719,34 +719,36 @@ const teams = [
   }
 ];
 
-test("the function returns all of the event data", () => {
-  dbBuild((error, response) => {
-    if (error) return console.log("ERROR IN DBBUILD: " + error);
-    expect.assertions(1);
-    return expect(getAllData.getTableData("events")).resolves.toEqual(events);
+describe.only("getAllData", () => {  
+  test("the function returns all of the event data", () => {
+    dbBuild((error, response) => {
+      if (error) return console.log("ERROR IN DBBUILD: " + error);
+      expect.assertions(1);
+      return expect(getAllData.getTableData("events")).resolves.toEqual(events);
+    });
   });
-});
 
-test("the function fails with an error", () => {
-  dbBuild((error, response) => {
-    if (error) return console.log("ERROR IN DBBUILD: " + error);
-    const msg = "OMG EXPLOSIONS";
+  test("the function fails with an error", () => {
+    dbBuild((error, response) => {
+      if (error) return console.log("ERROR IN DBBUILD: " + error);
+      const msg = "OMG EXPLOSIONS";
+    });
+    return expect(getAllData.getTableData("blah")).rejects.toThrow();
   });
-  return expect(getAllData.getTableData("blah")).rejects.toThrow();
-});
 
-test("the function returns all of the team data", () => {
-  dbBuild((error, response) => {
-    if (error) return console.log("ERROR IN DBBUILD: " + error);
-    expect.assertions(1);
-    return expect(getAllData.getTableData("teams")).resolves.toEqual(teams);
+  test("the function returns all of the team data", () => {
+    dbBuild((error, response) => {
+      if (error) return console.log("ERROR IN DBBUILD: " + error);
+      expect.assertions(1);
+      return expect(getAllData.getTableData("teams")).resolves.toEqual(teams);
+    });
   });
-});
 
-test("the function fails with an error", () => {
-  dbBuild((error, response) => {
-    if (error) return console.log("ERROR IN DBBUILD: " + error);
-    const msg = "OMG EXPLOSIONS";
-    return expect(getAllData.getTableData(new Error())).rejects.toThrow();
+  test("the function fails with an error", () => {
+    dbBuild((error, response) => {
+      if (error) return console.log("ERROR IN DBBUILD: " + error);
+      const msg = "OMG EXPLOSIONS";
+      return expect(getAllData.getTableData(new Error())).rejects.toThrow();
+    });
   });
-});
+})
